@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-export default function TaskList({ todos, onDeleteTodo }) {
+export default function TaskList({ todos, onDeleteTodo, onChangeTodo }) {
     const doing = todos.map(dos => (
         <li key={dos.id}>
-            <Task todo={dos} onHandleDelete={onDeleteTodo} />
+            <Task todo={dos} onHandleDelete={onDeleteTodo} onChange={onChangeTodo} />
         </li>
     ))
 
@@ -18,7 +18,7 @@ export default function TaskList({ todos, onDeleteTodo }) {
     )
 }
 
-function Task({ todo, onHandleDelete }) {
+function Task({ todo, onHandleDelete, onChange }) {
     const [isEditing, setIsEditing] = useState(false)
 
     let todoContent
@@ -26,8 +26,13 @@ function Task({ todo, onHandleDelete }) {
     if (isEditing) {
         todoContent = (
             <>
-                <input type="text" />
-                <button>save</button>
+                <input type="text" value={todo.title} onChange={(e) => {
+                    onChange({
+                        ...todo,
+                        title: e.target.value
+                    })
+                }} />
+                <button onClick={() => setIsEditing(false)}>save</button>
             </>
         )
     } else {

@@ -27,14 +27,20 @@ export default function Todo() {
         setTodos(tods)
     }
 
-    const handleEditTodo = (id) => {
-
+    const handleChangeTodo = (nextTodo) => {
+        setTodos(todos.map(todo => {
+            if (todo.id === nextTodo.id) {
+                return nextTodo
+            } else {
+                return todo
+            }
+        }))
     }
 
     return (
         <>
             <AddTodo onAddTodo={handleAddTodo} />
-            <TaskList todos={todos} onDeleteTodo={handleDeleteTodo} />
+            <TaskList todos={todos} onDeleteTodo={handleDeleteTodo} onChangeTodo={handleChangeTodo} />
         </>
     )
 }
