@@ -16,10 +16,15 @@ export const Gallery = () => {
         <>
             <input type="button" value="next" onClick={() => handleIndex()} />
             <div className="">
-                <h1>{sculpture.name} by {sculpture.artist}</h1>
-                <p>{index + 1} of {sculptureList.length}</p>
+                <h1>
+                    <i>{sculpture.name} </i>
+                    by {sculpture.artist}
+                </h1>
+                <h3>
+                    ({index + 1} of {sculptureList.length})
+                </h3>
                 <div>
-                    <input type="button" value="Show More" onClick={() => setShowMore(prevState => !prevState)} />
+                    <input type="button" value={showMore ? 'Hide' : 'Show'} onClick={() => setShowMore(prevState => !prevState)} />
                 </div>
                 <img src={sculpture.url} alt={sculpture.alt} />
                 <hr />
