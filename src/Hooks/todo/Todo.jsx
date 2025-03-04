@@ -19,7 +19,7 @@ export default function Todo() {
 
     const handleAddTodo = () => {
         let initialTodo = {
-            id: nextId + 1,
+            id: todos.length + 1,
             title: todoInput,
             done: false
         }
