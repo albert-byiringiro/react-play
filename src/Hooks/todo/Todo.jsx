@@ -19,14 +19,18 @@ export default function Todo() {
             done: false
         }
 
-
         setTodos([initialTodo, ...todos])
+    }
+
+    const handleTodoDone = (e) => {
+        const tods = todos.filter(dos => dos.id !== e)
+        setTodos(tods)
     }
 
     return (
         <>
             <AddTodo onAddTodo={handleAddTodo} />
-            <TaskList todos={todos} />
+            <TaskList todos={todos} onTodoDone={handleTodoDone} />
         </>
     )
 }
