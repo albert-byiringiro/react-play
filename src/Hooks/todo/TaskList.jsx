@@ -34,7 +34,7 @@ function Task({ todo, onHandleDelete }) {
         todoContent = (
             <>
                 <span>{todo.title}</span>
-                <button>Edit</button>
+                <button onClick={() => setIsEditing(true)}>Edit</button>
             </>
         )
     }
