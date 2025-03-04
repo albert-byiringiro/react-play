@@ -1,8 +1,9 @@
 import React from 'react'
-import { Gallery } from './Hooks/useState'
+import { Form } from './Hooks/useState'
+
 
 export default function App() {
   return (
-    <Gallery/>
+    <Form />
   )
 }
