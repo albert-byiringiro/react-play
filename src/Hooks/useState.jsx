@@ -42,25 +42,53 @@ export const Gallery = () => {
 */
 
 export const Form = () => {
-    const [form, setForm] = useState({
-        firstName: "Barbara",
-        lastName: 'Rina',
-        email: 'brina@sculpture.com',
-    })
+    const [person, setPerson] = useState({
+        name: 'Niki de Saint Phalle',
+        artwork: {
+            title: 'Blue Nana',
+            city: 'Hamburg',
+            image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+        }
+    });
+
+    const handleNameChange = (e) => setPerson({ ...person, name: e.target.value })
+
+    const handleTitleChange = (e) => {
+        setPerson({
+            ...person,
+            artwork: {
+                ...person.artwork,
+                title: e.target.value
+            }
+        })
+    }
+
+    const handleCityChange = (e) => {
+        setPerson({
+            ...person,
+            artwork: {
+                ...person.artwork,
+                city: e.target.value
+            }
+        })
+    }
 
     return (
         <>
-            <label htmlFor="firstName">First Name:
-                <input type="text" value={form.firstName} id='firstName' onChange={(e) => setForm({ ...form, firstName: e.target.value })} />
+            <label htmlFor="name">First Name:
+                <input type="text" value={person.name} id='name' onChange={handleNameChange} />
             </label>
-            <label htmlFor="lastName">Last Name:
-                <input type="text" value={form.lastName} id='lastName' onChange={(e) => setForm({ ...form, lastName: e.target.value })} />
+            <label htmlFor="title">Title:
+                <input type="text" value={person.artwork.title} id='title' onChange={handleTitleChange} />
             </label>
-            <label htmlFor="email">Email
-                <input type="text" value={form.email} id='email' onChange={(e) => setForm({ ...form, email: e.target.value })} />
+            <label htmlFor="city">city
+                <input type="text" value={person.artwork.city} id='city' onChange={handleCityChange} />
             </label>
             <hr />
-            <p>{form.firstName} {form.lastName} {form.email}</p>
+            <p>{person.name} by {person.artwork.title}
+                <br />
+                Located in {person.artwork.city}</p>
+            <img src={person.artwork.image} alt={person.artwork.title} />
         </>
     )
 }
