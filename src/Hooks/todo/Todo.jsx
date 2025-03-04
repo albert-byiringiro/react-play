@@ -11,9 +11,26 @@ const initialTodos = [
 
 export default function Todo() {
     const [todos, setTodos] = useState(initialTodos)
+    const [todoInput, setTodoInput] = useState("")
+
+    const handleInputTodo = (e) => {
+        setTodoInput(e.target.value)
+    }
+
+    const handleAddTodo = () => {
+        let initialTodo = {
+            id: nextId + 1,
+            title: todoInput,
+            done: false
+        }
+
+
+        setTodos([...todos, initialTodo])
+    }
+
     return (
         <>
-            <AddTodo />
+            <AddTodo handleInput={handleInputTodo} handleAdd={handleAddTodo} />
             <TaskList todos={todos} />
         </>
     )
