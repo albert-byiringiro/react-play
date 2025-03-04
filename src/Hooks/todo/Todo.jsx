@@ -1,0 +1,20 @@
+import { useState } from "react"
+import AddTodo from "./AddTodo"
+import TaskList from "./TaskList"
+
+let nextId = 3
+const initialTodos = [
+    { id: 1, title: 'Buy milk', done: true },
+    { id: 2, title: 'Eat Tacos', done: false },
+    { id: 3, title: 'Brew Tea', done: true },
+]
+
+export default function Todo() {
+    const [todos, setTodos] = useState(initialTodos)
+    return (
+        <>
+            <AddTodo />
+            <TaskList todos={todos} />
+        </>
+    )
+}
