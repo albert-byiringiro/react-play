@@ -37,8 +37,6 @@ export default function Todo() {
         }))
     }
 
-    console.log(todos)
-
     return (
         <>
             <AddTodo onAddTodo={handleAddTodo} />
