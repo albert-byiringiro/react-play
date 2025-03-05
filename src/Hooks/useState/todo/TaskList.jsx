@@ -46,10 +46,10 @@ function Task({ todo, onHandleDelete, onChange }) {
 
     return (
         <>
-            <input type="checkbox" name="done" id="done" checked={todo.done} onChange={() => {
+            <input type="checkbox" name="done" id="done" checked={todo.done} onChange={(e) => {
                 onChange({
                     ...todo,
-                    done: !todo.done
+                    done: e.target.checked
                 })
             }} />
             {todoContent}
