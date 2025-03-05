@@ -46,7 +46,12 @@ function Task({ todo, onHandleDelete, onChange }) {
 
     return (
         <>
-            <input type="checkbox" name="done" id="done" onClick={(e) => !e} />
+            <input type="checkbox" name="done" id="done" checked={todo.done} onChange={() => {
+                onChange({
+                    ...todo,
+                    done: !todo.done
+                })
+            }} />
             {todoContent}
             <button onClick={() => onHandleDelete(todo.id)}>Delete</button>
         </>
