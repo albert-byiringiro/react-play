@@ -17,14 +17,24 @@ const initialProducts = [{
 export default function ShoppingCart() {
     const [products, setProduct] = useState(initialProducts)
 
+    const handleIncreaseClick = (id) => {
+        setProduct(products.map(product => {
+            if (product.id === id) {
+                return { ...product, count: product.count + 1 }
+            }
+
+            return product
+        }))
+    }
+
     return (
         <>
             <ul>
                 {
                     products.map(product => (
                         <li key={product.id}>
-                            {product.name} ({product.count})
-                            <button>+</button>
+                            <span>{product.name} - ({product.count})</span>
+                            <button onClick={() => handleIncreaseClick(product.id)}>+</button>
                         </li>
                     ))
                 }
